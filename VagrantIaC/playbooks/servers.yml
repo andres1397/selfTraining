@@ -1,0 +1,68 @@
+---
+- hosts: all
+  become: yes
+  become_user: root
+  become_method: sudo
+  vars_files:
+    - ./vars/install_nodejs_vars.yml
+
+  tasks:
+    - name: install git
+      apt:
+        name: git
+        state: present
+
+    - name: install gpg key for nodejs LTS
+      apt_key:
+        url: "https://deb.nodesource.com/gpgkey/nodesource.gpg.key"
+        state: present
+    
+    - name: install nodjs LTS repo
+      apt_repository:
+        repo: "deb https://deb.nodesource.com/node_{{ NODEJS_VERSION }}.x {{ ansible_distribution_release }} main"
+        state: present
+        update_cache: yes
+    
+    - name: install nodejs
+      apt:
+        name: nodejs
+        state: present
+
+- hosts: Frontend
+  become: yes
+  become_user: root
+  become_method: sudo
+  tasks: 
+    - name: clone repository
+      git:
+        repo: 'https://github.com/juan-ruiz/movie-analyst-ui.git'
+        dest: /home/app
+        update: no
+
+    - name: install npm dependencies
+      npm:
+        path: /home/app/
+    
+    - name: create var env
+      shell: echo "BACK_HOST=192.168.50.30" >> /etc/environment
+
+    - name: Deploy and start frontend server
+      shell: tmux new-session -d -s "front" node /home/app/server.js
+
+- hosts: Backend
+  become: yes
+  become_user: root
+  become_method: sudo
+  tasks:
+    - name: clone repository
+      git:
+        repo: 'https://github.com/juan-ruiz/movie-analyst-api.git'
+        dest: /home/app
+        update: no
+      
+    - name: install npm dependencies
+      npm:
+        path: /home/app
+
+    - name: Deploy and start backend server
+      shell: tmux new-session -d -s "back" node /home/app/server.js

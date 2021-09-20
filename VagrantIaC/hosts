@@ -1,0 +1,9 @@
+server_provision ansible_ssh_user=vagrant
+
+[Frontend]
+
+Frontend ansible_host=192.168.50.20
+
+[Backend]
+
+Backend ansible_host=192.168.50.30
