@@ -64,5 +64,8 @@
       npm:
         path: /home/app
 
+    - name: create var env
+      shell: echo "PORT=3000" >> /etc/environment
+
     - name: Deploy and start backend server
       shell: tmux new-session -d -s "back" node /home/app/server.js
