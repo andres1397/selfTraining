@@ -1,0 +1,5 @@
+#Ignorar credenciales aws
+.tfvars
+#Ignorar ssh-key
+.pem
+
