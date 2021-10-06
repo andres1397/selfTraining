@@ -1,6 +1,6 @@
 #Ignorar credenciales aws
-./TerraformIaC/terraform.tfvars
+/TerraformIaC/terraform.tfvars
 #Ignorar ssh-key
-.pem
+/TerraformIaC/ssh_auth/*.pem
 #Ignorar .terraform
-./TerraformIaC/.terraform/
+/TerraformIaC/.terraform/

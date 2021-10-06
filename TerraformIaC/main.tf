@@ -1,7 +1,7 @@
 provider "aws" {
     region = "us-east-1"
-    access_key = "${file("home/user/Desktop/credentials/key")}"
-    secret_key = "${file("home/user/Desktop/credentials/secret")}"
+    access_key = "${file("/home/user/Desktop/credentials/key")}"
+    secret_key = "${file("/home/user/Desktop/credentials/secret")}"
 }
 
 resource "aws_vpc" "Main" {
