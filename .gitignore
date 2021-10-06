@@ -4,4 +4,3 @@
 .pem
 #Ignorar .terraform
 ./TerraformIaC/.terraform/
-
