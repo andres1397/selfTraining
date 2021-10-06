@@ -2,4 +2,6 @@
 .tfvars
 #Ignorar ssh-key
 .pem
+#Ignorar .terraform
+./TerraformIaC/.terraform/
 
