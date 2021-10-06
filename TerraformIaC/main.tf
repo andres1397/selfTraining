@@ -1,7 +1,17 @@
+variable "access" {
+    description = "Access-key-for-AWS"
+    default = "no_access_key_value_found"  
+}
+
+variable "secret" {
+    description = "Secret-key-for-AWS"
+    default = "no_secret_key_value_found"  
+}
+
 provider "aws" {
     region = "us-east-1"
-    access_key = "${file("/home/user/Desktop/credentials/key")}"
-    secret_key = "${file("/home/user/Desktop/credentials/secret")}"
+    access_key = var.access	
+    secret_key = var.secret
 }
 
 resource "aws_vpc" "Main" {
@@ -258,7 +268,7 @@ provisioner "file" {
       type = "ssh"
       user = "ubuntu"
       host = aws_instance.Web.public_ip
-      private_key = "${file("/home/user/Desktop/credentials/ssh_auth/TerraformIntegration.pem")}" 
+      private_key = "${file("./ssh_auth/TerraformIntegration.pem")}" 
       }
       
     }
@@ -274,7 +284,7 @@ provisioner "remote-exec" {
       type = "ssh"
       user = "ubuntu"
       host = aws_instance.Web.public_ip
-      private_key = "${file("/home/user/Desktop/credentials/ssh_auth/TerraformIntegration.pem")}" 
+      private_key = "${file("./ssh_auth/TerraformIntegration.pem")}" 
       }
       
     }
@@ -292,7 +302,7 @@ provisioner "file" {
       type = "ssh"
       user = "ubuntu"
       host = aws_instance.Api.public_ip
-      private_key = "${file("/home/user/Desktop/credentials/ssh_auth/TerraformIntegration.pem")}" 
+      private_key = "${file("./ssh_auth/TerraformIntegration.pem")}" 
       }
       
     }
@@ -308,7 +318,7 @@ provisioner "remote-exec" {
       type = "ssh"
       user = "ubuntu"
       host = aws_instance.Api.public_ip
-      private_key = "${file("/home/user/Desktop/credentials/ssh_auth/TerraformIntegration.pem")}" 
+      private_key = "${file("./ssh_auth/TerraformIntegration.pem")}" 
       }
       
     }
