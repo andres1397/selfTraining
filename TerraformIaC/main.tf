@@ -258,7 +258,7 @@ provisioner "file" {
       type = "ssh"
       user = "ubuntu"
       host = aws_instance.Web.public_ip
-      private_key = "${file("./ssh_auth/TerraformIntegration.pem")}" 
+      private_key = "${file("/home/user/Desktop/credentials/ssh_auth/TerraformIntegration.pem")}" 
       }
       
     }
@@ -274,7 +274,7 @@ provisioner "remote-exec" {
       type = "ssh"
       user = "ubuntu"
       host = aws_instance.Web.public_ip
-      private_key = "${file("./ssh_auth/TerraformIntegration.pem")}" 
+      private_key = "${file("/home/user/Desktop/credentials/ssh_auth/TerraformIntegration.pem")}" 
       }
       
     }
@@ -292,7 +292,7 @@ provisioner "file" {
       type = "ssh"
       user = "ubuntu"
       host = aws_instance.Api.public_ip
-      private_key = "${file("./ssh_auth/TerraformIntegration.pem")}" 
+      private_key = "${file("/home/user/Desktop/credentials/ssh_auth/TerraformIntegration.pem")}" 
       }
       
     }
@@ -308,7 +308,7 @@ provisioner "remote-exec" {
       type = "ssh"
       user = "ubuntu"
       host = aws_instance.Api.public_ip
-      private_key = "${file("./ssh_auth/TerraformIntegration.pem")}" 
+      private_key = "${file("/home/user/Desktop/credentials/ssh_auth/TerraformIntegration.pem")}" 
       }
       
     }
