@@ -6,3 +6,5 @@
 /TerraformIaC/ssh_auth
 #Ignorar .terraform
 /TerraformIaC/.terraform/
+#Ignorar directorio aws
+/aws/
