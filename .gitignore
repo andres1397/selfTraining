@@ -8,3 +8,6 @@
 /TerraformIaC/.terraform/
 #Ignorar directorio aws
 /aws/
+#Ignorar archivos pesados
+/Kubernetes/minikube-linux-ammd64
+Kubernetes/kubectl
